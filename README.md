@@ -22,11 +22,11 @@ We will call this architecture the SPS model.
 
 ``` Unicode
 PTP labels 
-  ├── 'Confidently Correct' = teacher model's prediction is correct & confidence > t 
-  ├── 'Unconfidently Correct' = teacher model's prediction is correct & confidence <= t 
-  ├── 'Confidently Wrong' = teacher model's prediction is wrong & confidence > t 
-  └── 'Unconfidently Wrong' = teacher model's prediction is wrong & confidence <= t
-  t = hyperparameter : depends on the downstream task and the teacher model. e.g.) t = 0.95 for MRPC, t = 0.8 for RTE.
+  ├── 'Confidently Correct' = teacher model's prediction is correct & confidence > t1 
+  ├── 'Unconfidently Correct' = teacher model's prediction is correct & confidence <= t1 
+  ├── 'Confidently Wrong' = teacher model's prediction is wrong & confidence > t2 
+  └── 'Unconfidently Wrong' = teacher model's prediction is wrong & confidence <= t2
+  t1, t2 = the median confidence value among the data for which the teacher model predicted correctly and incorrectly, respectively. Depends on the downstream task and the teacher model. e.g.) t1 = 0.95, t2 = 0.75 for MRPC, t1 = 0.8, t2 = 0.6 for RTE.
 ```  
 #### Baseline Codes
 This repository is based on the [GitHub repository](https://github.com/intersun/PKD-for-BERT-Model-Compression) for [Patient Knowledge Distillation for BERT Model Compression](https://arxiv.org/abs/1908.09355). All source files are from the repository if not mentioned otherwise. The main scripts that actually run tasks are the following two files, and they have been modified from the original files in the original repository:
